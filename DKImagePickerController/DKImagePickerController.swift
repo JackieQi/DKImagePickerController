@@ -99,7 +99,7 @@ public enum DKImagePickerControllerSourceType : Int {
 /**
  * The `DKImagePickerController` class offers the all public APIs which will affect the UI.
  */
-public class DKImagePickerController : UINavigationController {
+open class DKImagePickerController : UINavigationController {
 
 	public var UIDelegate: DKImagePickerControllerUIDelegate = {
 		return DKImagePickerControllerDefaultUIDelegate()
@@ -249,12 +249,12 @@ public class DKImagePickerController : UINavigationController {
 		getImageManager().invalidate()
     }
     
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
     }
 	
 	private var hasInitialized = false
-	override public func viewWillAppear(_ animated: Bool) {
+	override open func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
 		if !hasInitialized {
@@ -433,11 +433,11 @@ public class DKImagePickerController : UINavigationController {
 	
     // MARK: - Handles Orientation
 
-  public override var shouldAutorotate: Bool {
+  open override var shouldAutorotate: Bool {
 		return self.allowsLandscape && self.sourceType != .camera ? true : false
   }
   
-  public override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+  open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     if self.allowsLandscape {
       return super.supportedInterfaceOrientations
     } else {
